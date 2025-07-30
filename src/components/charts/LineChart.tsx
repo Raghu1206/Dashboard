@@ -1,6 +1,20 @@
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
+'use client'
 
-export function UsersLineChart({ data }: { data: any[] }) {
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts'
+
+interface UserData {
+  date: string
+  users: number
+}
+
+export function UsersLineChart({ data }: { data: UserData[] }) {
   return (
     <ResponsiveContainer width="100%" height={300}>
       <LineChart data={data}>

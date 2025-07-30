@@ -1,6 +1,20 @@
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
+'use client'
 
-export function RevenueBarChart({ data }: { data: any[] }) {
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts'
+
+interface RevenueData {
+  channel: string
+  revenue: number
+}
+
+export function RevenueBarChart({ data }: { data: RevenueData[] }) {
   return (
     <ResponsiveContainer width="100%" height={300}>
       <BarChart data={data}>
