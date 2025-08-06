@@ -1,13 +1,27 @@
-
 'use client'
 
 import { Download } from 'lucide-react'
 
 export default function ExportCSV({ data }: { data: any[] }) {
   const exportCSV = () => {
+    if (!data || data.length === 0) return
+
+    const escapeCSV = (value: any) => {
+      if (value == null) return ''
+      const str = String(value)
+      // Escape double quotes and wrap in quotes if necessary
+      if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+        return `"${str.replace(/"/g, '""')}"`
+      }
+      return str
+    }
+
+    const header = Object.keys(data[0])
     const csv = [
-      Object.keys(data[0]).join(','),
-      ...data.map(row => Object.values(row).join(',')),
+      header.join(','), // header row
+      ...data.map(row =>
+        header.map(fieldName => escapeCSV(row[fieldName])).join(',')
+      ),
     ].join('\n')
 
     const blob = new Blob([csv], { type: 'text/csv' })
@@ -16,6 +30,7 @@ export default function ExportCSV({ data }: { data: any[] }) {
     a.href = url
     a.download = 'report.csv'
     a.click()
+    URL.revokeObjectURL(url)
   }
 
   return (
