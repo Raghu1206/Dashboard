@@ -127,3 +127,17 @@ html, body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Fancy background gradient for light theme */
+body.theme-light {
+  background: linear-gradient(-45deg, #ffecd2, #fcb69f, #ffdde1, #d1fdff);
+  background-size: 400% 400%;
+  animation: bg-fade 15s ease infinite;
+}
+
+/* Fancy background for dark theme */
+body.theme-dark {
+  background: linear-gradient(-45deg, #1f1c2c, #928dab, #2b5876, #4e4376);
+  background-size: 400% 400%;
+  animation: bg-fade 15s ease infinite;
+}
