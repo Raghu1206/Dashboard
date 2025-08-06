@@ -31,7 +31,7 @@ function ThemeToggleButton() {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="bg-background text-foreground transition-colors">
       <body className={inter.className}>
         <ThemeProviderWrapper>
           <div className="absolute top-4 right-4 z-50">
