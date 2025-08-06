@@ -11,25 +11,27 @@ import { DateRangePicker } from '@/components/ui/DateRangePicker'
 import { ExportCSV } from '@/components/ui/ExportCSV'
 import { LoadingSkeleton } from '@/components/ui/LoadingSkeleton'
 import { motion } from 'framer-motion'
-import {ThemeToggle} from '@/components/ThemeToggle'
-import { ThemeProviderWrapper } from '@/components/theme-provider-wrapper'
+import { ThemeToggle } from '@/components/ThemeToggle'
 
 export default function DashboardPage() {
   const [loading, setLoading] = useState(false)
 
   return (
     <motion.div
-      className="p-6 space-y-10"
+      className="p-6 space-y-10 bg-background text-foreground min-h-screen transition-colors"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
     >
-      <section className="space-y-4">
-        <h1 className="text-3xl font-bold tracking-tight">📊 Dashboard Overview</h1>
-        <div className="flex flex-wrap gap-4 items-center justify-between">
-          <DateRangePicker />
-          <ExportCSV data={mockTableData} />
-        </div>
+      {/* Top bar with toggle */}
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-bold tracking-tight">📊 AdMyBrand Dashboard</h1>
+        <ThemeToggle />
+      </div>
+
+      <section className="flex flex-wrap gap-4 items-center justify-between">
+        <DateRangePicker />
+        <ExportCSV data={mockTableData} />
       </section>
 
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
