@@ -1,23 +1,19 @@
-import { Card, CardContent } from "@/components/ui/card"
 
 interface MetricCardProps {
   title: string
   value: string
-  icon: React.ReactNode
-  change: string
+  growth: number
 }
 
-export function MetricCard({ title, value, icon, change }: MetricCardProps) {
+export function MetricCard({ title, value, growth }: MetricCardProps) {
   return (
-    <Card className="shadow-md">
-      <CardContent className="p-4 flex items-center justify-between">
-        <div>
-          <p className="text-sm text-muted-foreground">{title}</p>
-          <h2 className="text-2xl font-bold">{value}</h2>
-          <p className="text-xs text-green-500">{change}</p>
-        </div>
-        <div className="text-primary text-3xl">{icon}</div>
-      </CardContent>
-    </Card>
+    <div className="p-4 rounded-2xl shadow bg-card flex flex-col gap-2">
+      <h3 className="text-sm text-muted-foreground">{title}</h3>
+      <div className="text-xl font-semibold">{value}</div>
+      <div className={`text-sm ${growth >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+        {growth >= 0 ? '+' : ''}
+        {growth}%
+      </div>
+    </div>
   )
 }

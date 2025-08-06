@@ -1,7 +1,5 @@
-import React from 'react'
-
-export default function LoadingSkeleton({ className }: { className?: string }) {
+export function LoadingSkeleton() {
   return (
-    <div className={`animate-pulse rounded-md bg-muted ${className}`} />
+    <div className="w-full h-32 bg-muted animate-pulse rounded-lg" />
   )
 }

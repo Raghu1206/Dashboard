@@ -1,40 +1,24 @@
-'use client'
+import { PieChart as PChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts'
 
-import {
-  PieChart,
-  Pie,
-  Cell,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts'
+const data = [
+  { name: 'Mobile', value: 400 },
+  { name: 'Desktop', value: 300 },
+  { name: 'Tablet', value: 300 },
+]
 
-const COLORS = ['#4f46e5', '#ec4899', '#10b981']
+const COLORS = ['#8884d8', '#82ca9d', '#ffc658']
 
-interface DeviceData {
-  device: string
-  value: number
-}
-
-export function DevicePieChart({ data }: { data: DeviceData[] }) {
+export function PieChart() {
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <PieChart>
-        <Pie
-          data={data}
-          dataKey="value"
-          nameKey="device"
-          cx="50%"
-          cy="50%"
-          outerRadius={100}
-          fill="#8884d8"
-          label
-        >
+    <ResponsiveContainer width="100%" height={250}>
+      <PChart>
+        <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={70}>
           {data.map((_, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
         <Tooltip />
-      </PieChart>
+      </PChart>
     </ResponsiveContainer>
   )
 }

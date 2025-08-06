@@ -1,33 +1,16 @@
-
 'use client'
 
-import React, { useState } from 'react'
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
+import { useState } from 'react'
 
-export default function DateRangePicker({
-  onChange,
-}: {
-  onChange: (start: Date, end: Date) => void
-}) {
-  const [startDate, setStartDate] = useState(new Date())
-  const [endDate, setEndDate] = useState(new Date())
-
-  const handleChange = (dates: [Date, Date]) => {
-    const [start, end] = dates
-    setStartDate(start)
-    setEndDate(end)
-    if (start && end) onChange(start, end)
-  }
+export function DateRangePicker() {
+  const [range, setRange] = useState('Last 30 days')
 
   return (
-    <DatePicker
-      selected={startDate}
-      onChange={handleChange}
-      startDate={startDate}
-      endDate={endDate}
-      selectsRange
-      inline
-    />
+    <select value={range} onChange={(e) => setRange(e.target.value)} className="border p-2 rounded">
+      <option>Today</option>
+      <option>Last 7 days</option>
+      <option>Last 30 days</option>
+      <option>Last 90 days</option>
+    </select>
   )
 }

@@ -1,26 +1,15 @@
-const getRandom = (min: number, max: number) =>
-  Math.floor(Math.random() * (max - min + 1)) + min
+// src/lib/data.ts
 
-export const generateMetrics = () => ({
-  revenue: `$${getRandom(10000, 20000)}`,
-  users: getRandom(5000, 10000).toString(),
-  conversion: `${(Math.random() * (10 - 1) + 1).toFixed(2)}%`,
-  growth: `${(Math.random() * (5 - 1) + 1).toFixed(2)}%`,
-})
+export const mockMetrics = [
+  { title: 'Revenue', value: '$23,400', growth: 12 },
+  { title: 'Users', value: '8,540', growth: 8 },
+  { title: 'Conversions', value: '1,120', growth: 10 },
+  { title: 'Growth %', value: '4.2%', growth: 4.2 },
+]
 
-export const generateChartData = () => ({
-  usersOverTime: Array.from({ length: 7 }).map((_, i) => ({
-    date: `Day ${i + 1}`,
-    users: getRandom(500, 1500),
-  })),
-  revenueChannels: [
-    { channel: 'Google Ads', revenue: getRandom(2000, 8000) },
-    { channel: 'Facebook', revenue: getRandom(1000, 7000) },
-    { channel: 'Instagram', revenue: getRandom(1500, 6000) },
-  ],
-  devices: [
-    { device: 'Mobile', value: getRandom(200, 500) },
-    { device: 'Desktop', value: getRandom(100, 400) },
-    { device: 'Tablet', value: getRandom(50, 300) },
-  ],
-})
+export const mockTableData = [
+  { campaign: 'Summer Ads', impressions: 234000, clicks: 3423, conversions: 423 },
+  { campaign: 'SEO Boost', impressions: 150000, clicks: 2890, conversions: 390 },
+  { campaign: 'Facebook Reach', impressions: 110000, clicks: 1523, conversions: 180 },
+  { campaign: 'Google CPC', impressions: 192000, clicks: 4000, conversions: 500 },
+]

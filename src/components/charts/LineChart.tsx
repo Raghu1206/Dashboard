@@ -1,28 +1,22 @@
-'use client'
+import { LineChart as LChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts'
+const data = [
+  { month: 'Jan', users: 200 },
+  { month: 'Feb', users: 300 },
+  { month: 'Mar', users: 500 },
+  { month: 'Apr', users: 700 },
+  { month: 'May', users: 600 },
+]
 
-interface UserData {
-  date: string
-  users: number
-}
-
-export function UsersLineChart({ data }: { data: UserData[] }) {
+export function LineChart() {
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <LineChart data={data}>
-        <XAxis dataKey="date" />
+    <ResponsiveContainer width="100%" height={250}>
+      <LChart data={data}>
+        <XAxis dataKey="month" />
         <YAxis />
         <Tooltip />
-        <Line type="monotone" dataKey="users" stroke="#4f46e5" />
-      </LineChart>
+        <Line type="monotone" dataKey="users" stroke="#8884d8" strokeWidth={2} />
+      </LChart>
     </ResponsiveContainer>
   )
 }
