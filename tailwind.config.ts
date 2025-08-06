@@ -1,7 +1,5 @@
-import type { Config } from 'tailwindcss'
-
-const config: Config = {
-  darkMode: 'class', // enables dark/light mode toggle via `class`
+const config = {
+  darkMode: 'class',
   content: [
     './src/app/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
@@ -23,7 +21,6 @@ const config: Config = {
     },
   },
   plugins: [],
-}
+};
 
-export default config
- 
+export default config;
